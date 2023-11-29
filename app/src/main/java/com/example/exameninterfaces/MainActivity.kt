@@ -41,34 +41,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "Portada", modifier = Modifier.navigationBarsPadding()) {
 
-                        composable(
-                            route = "Portada",
-                            enterTransition = {
-                                slideIntoContainer(
-                                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Up,
-                                    animationSpec = tween(700)
-                                )
-                            },
-                            exitTransition = {
-                                slideOutOfContainer(
-                                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Down,
-                                    animationSpec = tween(700)
-                                )
-                            },
-                            popEnterTransition = {
-                                slideIntoContainer(
-                                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Down,
-                                    animationSpec = tween(700)
-                                )
-                            },
-                            popExitTransition = {
-                                slideOutOfContainer(
-                                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Down,
-                                    animationSpec = tween(700)
-                                )
-                            }) {
-                            Portada(navController)
-                        }
+                        composable("Portada") { Portada(navController) }
                         composable(
                             route = "Foto/{nombreImagen}",
                             arguments = listOf(navArgument("nombreImagen") { type = NavType.StringType }),
@@ -79,23 +52,8 @@ class MainActivity : ComponentActivity() {
                                 )
                             },
                             exitTransition = {
-                                slideOutOfContainer(
-                                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Up,
-                                    animationSpec = tween(700)
-                                )
+                                fadeOut(animationSpec = tween(700))
                             },
-                            popEnterTransition = {
-                                slideIntoContainer(
-                                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Down,
-                                    animationSpec = tween(700)
-                                )
-                            },
-                            popExitTransition = {
-                                slideOutOfContainer(
-                                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Down,
-                                    animationSpec = tween(700)
-                                )
-                            }
                         ) { backStackEntry ->
                             Foto(backStackEntry.arguments?.getString("nombreImagen") ?: "", navController)
                         }
