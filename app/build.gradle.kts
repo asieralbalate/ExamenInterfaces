@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.exameninterfaces"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.exameninterfaces"
@@ -60,6 +60,10 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.navigation:navigation-compose:2.6.0-alpha04")
     implementation("androidx.navigation:navigation-runtime-ktx:2.6.0")
+    implementation("androidx.palette:palette-ktx:1.0.0")
+    implementation ("androidx.activity:activity-compose:1.8.1")
+    implementation ("androidx.compose.animation:animation:1.5.4")
+    implementation ("androidx.navigation:navigation-compose:2.7.0-beta02")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

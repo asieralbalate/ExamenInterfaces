@@ -16,12 +16,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -42,13 +41,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.exameninterfaces.ui.theme.Purple80
-import com.example.exameninterfaces.ui.theme.PurpleGrey80
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
 fun Portada(navController: NavHostController) {
-    Scaffold(topBar = {
+    Scaffold(floatingActionButton = {}, floatingActionButtonPosition = FabPosition.End ,topBar = {
         MyTopAppBar()
     }, content = {
         Box(
@@ -66,18 +64,6 @@ fun Portada(navController: NavHostController) {
                     }
                 }
             )
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
-                FloatingActionButton(
-                    modifier = Modifier.padding(10.dp),
-                    containerColor = PurpleGrey80,
-                    onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = null,
-                        tint = Color.Black
-                    )
-                }
-            }
         }
     }
     )
@@ -91,10 +77,6 @@ data class CardData(
 
 fun getCardData(): List<CardData> {
     return listOf(
-        CardData(
-            "Image",
-            R.drawable.image,
-        ),
         CardData(
             "Image 1",
             R.drawable.image1,
